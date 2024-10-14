@@ -1,4 +1,5 @@
-const app = require('express')();
+const express = require('express');
+const app = express();
 const morgan = require("morgan");
 require('dotenv').config({ override: true });
 
@@ -7,6 +8,7 @@ const port = process.env.PORT || 3000;
 // middlewares
 
 app.use(morgan('dev'));
+app.use(express.json());
 
 // routes
 
