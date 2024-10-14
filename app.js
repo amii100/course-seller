@@ -7,11 +7,17 @@ const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
     res.status(200).json({
-        status: "success",
+        success: true,
         message: "You are on the homepage."
     })
 })
 
+app.get('*', (req, res) => {
+    res.status(404).json({
+        success: false,
+        message: "Page Not Found"
+    })
+})
 // listen on port
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
