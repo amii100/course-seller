@@ -3,6 +3,8 @@ const app = express();
 const morgan = require("morgan");
 require('dotenv').config({ override: true });
 
+const courseRoutes = require('./routes/courses');
+
 const port = process.env.PORT || 3000;
 
 // middlewares
@@ -11,6 +13,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 // routes
+
+app.use('/courses', courseRoutes);
 
 app.get('/', (req, res) => {
     res.status(200).json({
