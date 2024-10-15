@@ -1,35 +1,21 @@
 const { getClient } = require('../lib/database');
 
-// let data = [
-//     {
-//         courseName: "NodeJs",
-//         author: "Sahil",
-//         price: 38000
-//     },
-//     {
-//         courseName: "Web3",
-//         author: "Amitesh",
-//         price: 54000
-//     },
-//     {
-//         courseName: "IAS",
-//         author: "Saman",
-//         price: 73000
-//     },
-//     {
-//         courseName: "Angular",
-//         author: "Nidhi",
-//         price: 82000
-//     }
-// ]
-
 const getAllCourses = async (req, res) => {
     const client = await getClient();
     const data = (await client.query("SELECT * FROM course")).rows;
     res.status(200).json(data);
 }
 
+const postNewCourse = async (req, res) => {
+    const client = await getClient();
+    const course_name = "New course";
+    const author = "New Author";
+    const price = 12000;
+    await client.query(`INSERT INTO course (course_name, author, price) values (${course_name}, ${author}, ${price})`);
+    res.status(201).json({success: true});
+}
 
 module.exports = {
-    getAllCourses
+    getAllCourses,
+    postNewCourse
 }
