@@ -5,6 +5,7 @@ require('dotenv').config({ override: true });
 
 const courseRoutes = require('./routes/courses');
 
+// eslint-disable-next-line no-undef
 const port = process.env.PORT || 3000;
 
 // middlewares
