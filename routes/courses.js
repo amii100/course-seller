@@ -3,7 +3,7 @@ const { getAllCourses, postNewCourse, deleteCourse } = require('../controllers/c
 
 Router.get('/', getAllCourses);
 Router.post('/', postNewCourse);
-Router.delete('/', deleteCourse);
+Router.delete('/:id', deleteCourse);
 
 
 module.exports = Router;
