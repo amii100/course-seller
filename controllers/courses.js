@@ -6,6 +6,13 @@ const getAllCourses = async (req, res) => {
     res.status(200).json(data);
 }
 
+const getCourse = async (req, res) => {
+    const client = await getClient();
+    const id = req.params.id;
+    const data = (await client.query(`SELECT * FROM course WHERE id = ${id}`)).rows;
+    res.status(200).json(data);
+}
+
 const postNewCourse = async (req, res) => {
     const client = await getClient();
     const { course_name, author, price } = req.query;
@@ -24,6 +31,7 @@ const deleteCourse = async (req, res) => {
 
 module.exports = {
     getAllCourses,
+    getCourse,
     postNewCourse,
     deleteCourse
 }
