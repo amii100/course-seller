@@ -16,7 +16,7 @@ const postNewCourse = async (req, res) => {
 const deleteCourse = async (req, res) => {
     // delete a course from the db list
 
-    const course_name = "New course";
+    const course_name = req.params.course_name;
     const client = await getClient();
     await client.query(`DELETE FROM course WHERE course_name = '${course_name}'`);
     res.status(200).json({success: true});
